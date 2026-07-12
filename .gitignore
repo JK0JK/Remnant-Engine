@@ -1,0 +1,5 @@
+butano
+*.gba
+*.elf
+*.sav
+build/
