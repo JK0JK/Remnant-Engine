@@ -12,6 +12,7 @@ namespace remnant {
     class TopDownScene : public Scene {
         public:
             TopDownScene(TopDownSceneInfo);
+            static bn::unique_ptr<Scene> create(const SceneInfo*);
             void start() override;
             void update() override;
         private:

@@ -4,7 +4,6 @@
 #define EXAMPLE_SCENE_LIST_H
 
 #include "scene.h"
-#include "scene_type.h"
 #include "topdown_scene.h"
 
 #define DEFAULT_SCENE 0
@@ -14,7 +13,7 @@ namespace game {
     constexpr remnant::TopDownSceneInfo topdown1 = { {}, 1, 2};
 
     constexpr remnant::GeneralSceneInfo scene_list[] = {
-        {remnant::SceneType::TOPDOWN_SCENE, &topdown1}
+        {remnant::TopDownScene::create, &topdown1},
     };
 }
 

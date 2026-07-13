@@ -21,14 +21,7 @@ namespace remnant {
     }
 
     bn::unique_ptr<Scene> SceneManager::createScene(int index) {
-        const GeneralSceneInfo& information = game::scene_list[index];
-        switch (information.scene_type) {
-            case SceneType::TOPDOWN_SCENE:
-                return bn::unique_ptr<Scene>(new TopDownScene(*static_cast<const TopDownSceneInfo*>(information.scene_info)));
-                break;
-            default:
-                return createScene(DEFAULT_SCENE);  // equivalent to deltarune's "dog check"
-                break;
-        }
+        const GeneralSceneInfo& scene_maker = game::scene_list[index];
+        return scene_maker.creation_function(scene_maker.scene_info);
     }
 }
