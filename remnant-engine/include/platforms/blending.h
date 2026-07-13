@@ -13,6 +13,4 @@
     #include "macos_blending.h"
 #endif
 
-namespace re = bn;
-
 #endif

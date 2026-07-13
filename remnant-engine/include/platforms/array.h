@@ -13,6 +13,4 @@
     #include "macos_array.h"
 #endif
 
-namespace re = bn;
-
 #endif

@@ -13,6 +13,4 @@
     #include "macos_blending_fade_alpha.h"
 #endif
 
-namespace re = bn;
-
 #endif

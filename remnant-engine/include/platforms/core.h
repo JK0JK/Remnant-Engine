@@ -13,6 +13,4 @@
     #include "macos_core.h"
 #endif
 
-namespace re = bn;
-
 #endif

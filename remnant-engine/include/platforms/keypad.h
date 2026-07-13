@@ -13,6 +13,4 @@
     #include "macos_keypad.h"
 #endif
 
-namespace re = bn;
-
 #endif

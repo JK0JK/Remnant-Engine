@@ -13,6 +13,4 @@
     #include "macos_bg_palettes.h"
 #endif
 
-namespace re = bn;
-
 #endif

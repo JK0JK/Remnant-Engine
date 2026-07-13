@@ -1,9 +1,9 @@
 #include "core.h"
 
 int main() {
-    re::core::init();
+    bn::core::init();
 
     while (true) {
-        re::core::update();
+        bn::core::update();
     }
 }

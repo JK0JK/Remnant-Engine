@@ -5,4 +5,4 @@ As one may be able to see from [core.h](/remnant-engine/include/platforms/core.h
 
 I will never touch a windows or macos computer again if i can help it, and neither should you. But in case you do, consider creating your own implementation for each of these.
 
-For homogeneity, the equivalent namespace for "bn" is "re" for "remnant engine".
+For homogeneity, keep the namespace "bn" because you're adapting the butano engine.
