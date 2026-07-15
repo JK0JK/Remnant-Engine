@@ -7,6 +7,7 @@
 #include "display.h"
 #include "blending.h"
 #include "core.h"
+#include "screen_effects_type.h"
 
 namespace remnant {
     class ScreenEffects {
@@ -35,24 +36,16 @@ namespace remnant {
         
             void update();
             void next_state();
+
+            CameraState current_state();
+            void reload_alphas_ref();
         
         private:
             bn::array<bn::blending_fade_alpha, bn::display::height()> _fade_alphas;
             bn::blending_fade_alpha_hbe_ptr _fade_hbe;
             int _current_frame = 0;
             int _duration_frames = 30;
-        
-            enum class CameraState {
-                CLEAR,
-                BUTANO,
-                CAMERA,
-                CAMERABLEND,
-                FADEIN,
-                FADEINCAMERA,
-                FADEOUT,
-                FADEOUTCAMERA,
-                BLACK   // just so you know when it's finished
-            };
+
             CameraState _camera_state = CameraState::CLEAR;
     };
 }

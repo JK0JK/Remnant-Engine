@@ -3,6 +3,7 @@
 
 #include "scene.h"
 #include "unique_ptr.h"
+#include "screen_effects.h"
 
 namespace remnant {
     class SceneManager {
@@ -11,8 +12,12 @@ namespace remnant {
             SceneManager(int);
             void update();
             bn::unique_ptr<Scene> createScene(int);
+            void startCurrentScene();
+            remnant::ScreenEffects getScreenEffects();
         private:
+            remnant::ScreenEffects _screen_effects;
             bn::unique_ptr<Scene> _current_scene;
+            const remnant::SceneInfo* _current_scene_info;
             //remnant::SceneInfo _next_scene;
     };
 }

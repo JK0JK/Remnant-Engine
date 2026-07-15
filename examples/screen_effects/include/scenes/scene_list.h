@@ -4,17 +4,18 @@
 #define EXAMPLE_SCENE_LIST_H
 
 #include "scene.h"
-#include "scene_type.h"
+#include "screen_effects_scene.h"
 #include "topdown_scene.h"
 
 #define DEFAULT_SCENE 0
+#define SCREEN_EFFECTS_SCENE 0
 #define SCENE_AMOUNT 1
 
 namespace game {
-    constexpr remnant::TopDownSceneInfo topdown1 = { {}, 1, 2};
+    constexpr game::ScreenEffectsSceneInfo screen_effects_test = { {true, true} };
 
     constexpr remnant::GeneralSceneInfo scene_list[] = {
-        {remnant::SceneType::TOPDOWN_SCENE, &topdown1}
+        {game::ScreenEffectsScene::create, &screen_effects_test},
     };
 }
 

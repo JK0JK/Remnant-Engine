@@ -4,7 +4,11 @@
 #include "unique_ptr.h"
 
 namespace remnant {
-    struct SceneInfo { };
+    struct SceneInfo {
+        bool fadeIn;    // does the scene fade in when loaded?
+        bool fadeout;   // does the scene fade out before unloaded?
+        
+    };
 
     class Scene {
         public:

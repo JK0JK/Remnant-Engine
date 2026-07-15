@@ -1,5 +1,4 @@
 #include "screen_effects.h"
-#include "keypad.h"
 
 namespace remnant
 {
@@ -16,7 +15,6 @@ namespace remnant
     // prepares the screen for the next frame
     void ScreenEffects::update()
     {
-        if (bn::keypad::a_pressed()) { next_state(); }
         switch(_camera_state)
         {
             case CameraState::FADEOUT:
@@ -276,6 +274,16 @@ namespace remnant
                 set_clear();
                 break;
         }
+        reload_alphas_ref();
+    }
+
+    CameraState ScreenEffects::current_state()
+    {
+        return _camera_state;
+    }
+
+    void ScreenEffects::reload_alphas_ref()
+    {
         _fade_hbe.reload_alphas_ref();
     }
 }

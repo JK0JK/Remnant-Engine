@@ -7,6 +7,11 @@ namespace remnant {
     struct TopDownSceneInfo : SceneInfo {
         int size_x;
         int size_y;
+        // bg1
+        // bg2
+        // bg3
+        // collision layer
+        // list of NPCs
     };
 
     class TopDownScene : public Scene {
