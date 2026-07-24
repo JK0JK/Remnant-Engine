@@ -19,6 +19,7 @@ namespace game {
             void update() override;
         private:
             remnant::ScreenEffects* _screen_effects;
+            int _next_scene;
     };
 }
 

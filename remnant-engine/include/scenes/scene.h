@@ -2,12 +2,16 @@
 #define REMNANT_SCENE_H
 
 #include "unique_ptr.h"
+#include "scene_list.h"
 
 namespace remnant {
+
+    class SceneManager;
+
     struct SceneInfo {
         bool fadeIn;    // does the scene fade in when loaded?
-        bool fadeout;   // does the scene fade out before unloaded?
-        
+        bool fadeOut;   // does the scene fade out before unloaded?
+        int default_next_scene;
     };
 
     class Scene {
@@ -17,6 +21,7 @@ namespace remnant {
             //must implement create in order for the program to know how to deal with it
             virtual void start();
             virtual void update();
+            virtual void end(int);
     };
 
     struct GeneralSceneInfo {

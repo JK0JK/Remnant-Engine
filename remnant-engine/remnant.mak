@@ -1,7 +1,7 @@
 #---------------------------------------------------------------------------------------------------------------------  
 # Remnant Engine - automatically add engine directories to build  
 #---------------------------------------------------------------------------------------------------------------------  
-  
+
 # Add remnant-engine source directories to SOURCES  
 SOURCES     	+=  $(shell find $(LIBREMNANT)/src -type d 2>/dev/null)
   

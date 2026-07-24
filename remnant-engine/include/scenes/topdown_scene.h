@@ -12,6 +12,10 @@ namespace remnant {
         // bg3
         // collision layer
         // list of NPCs
+        int north_map;
+        int south_map;
+        int east_map;
+        int west_map;
     };
 
     class TopDownScene : public Scene {
@@ -23,6 +27,10 @@ namespace remnant {
         private:
             int _size_x;
             int _size_y;
+            int _north_map;
+            int _south_map;
+            int _east_map;
+            int _west_map;
     };
 }
 

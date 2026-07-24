@@ -2,6 +2,7 @@
 #define REMNANT_GLOBAL_H
 
 #include "unique_ptr.h"
+#include "log.h"
 
 namespace remnant {
     class SceneManager;
