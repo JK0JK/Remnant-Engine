@@ -2,7 +2,7 @@
 #define EXAMPLE_REMNANT_LOGO_SCENE_H
 
 #include "scene.h"
-#include "sprite_object.h"
+#include "sprite_ptr.h"
 
 namespace game {
     struct RemnantLogoSceneInfo : remnant::SceneInfo { 
@@ -16,7 +16,7 @@ namespace game {
             void start() override;
             void update() override;
         private:
-            remnant::SpriteObject _remnant_sprite;
+            bn::sprite_ptr _remnant_sprite;
             int _next_scene;
     };
 }

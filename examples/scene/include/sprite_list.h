@@ -1,0 +1,11 @@
+#ifndef EXAMPLE_SPRITE_LIST_H
+#define EXAMPLE_SPRITE_LIST_H
+
+#define DEFAULT_SPRITE 0
+
+#define REMNANT_LOGO_64 0
+#define REMNANT_LOGO_128 1
+
+#define SPRITE_AMOUNT 2
+
+#endif

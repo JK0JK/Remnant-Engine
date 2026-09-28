@@ -10,7 +10,7 @@ namespace game {
 }
 
 int main() {
-    bn::core::init(bn::color(31,31,0));
+    bn::core::init(bn::color(0,0,0));
 
     game::global_data global_instance = {NULL, NULL};
     game::global_ptr = &global_instance;

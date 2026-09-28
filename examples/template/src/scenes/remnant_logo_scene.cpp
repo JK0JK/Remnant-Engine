@@ -2,12 +2,11 @@
 
 #include "keypad.h"
 #include "global.h"
-
-#include "sprite_list_definitions.h"
+#include "bn_sprite_items_proto_remnant_logo.h"
 
 namespace game {
     RemnantLogoScene::RemnantLogoScene(RemnantLogoSceneInfo scene_info) :
-        _remnant_sprite(REMNANT_LOGO_64),
+        _remnant_sprite(bn::sprite_items::proto_remnant_logo.create_sprite(0,0)),
         _next_scene(scene_info.default_next_scene)
     {
         _remnant_sprite.set_blending_enabled(true);

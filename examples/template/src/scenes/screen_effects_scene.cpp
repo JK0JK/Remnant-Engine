@@ -3,9 +3,12 @@
 #include "keypad.h"
 #include "global.h"
 
+#include "scene_manager.h"
+
 namespace game {
-    ScreenEffectsScene::ScreenEffectsScene(ScreenEffectsSceneInfo) {
+    ScreenEffectsScene::ScreenEffectsScene(ScreenEffectsSceneInfo scene_info) {
         this->_screen_effects = global_ptr->screen_effects;
+        this->_next_scene = scene_info.default_next_scene;
     }
 
     // this one is static so other functions can reach it, check "screen_effects_scene.h"
@@ -19,6 +22,8 @@ namespace game {
     void ScreenEffectsScene::update() {
         // detect input
         if (bn::keypad::a_pressed()) { global_ptr->screen_effects->next_state(); }
-        //_screen_effects.update();
+        if(bn::keypad::l_pressed()) {
+            end(_next_scene);
+        }
     }
 }

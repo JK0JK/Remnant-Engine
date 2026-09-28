@@ -1,21 +1,10 @@
-// TODO: make this generate automatically (?)
-
 #ifndef EXAMPLE_SCENE_LIST_H
 #define EXAMPLE_SCENE_LIST_H
 
-#include "scene.h"
-#include "empty_scene.h"
-
 #define DEFAULT_SCENE 0
-#define EMPTY_SCENE 0
-#define SCENE_AMOUNT 1
-
-namespace game {
-    constexpr game::EmptySceneInfo empty_scene = { {true, true} };
-
-    constexpr remnant::GeneralSceneInfo scene_list[] = {
-        {game::EmptyScene::create, &empty_scene}
-    };
-}
+#define SCREEN_EFFECTS_SCENE 0
+#define REMNANT_LOGO_SCENE 1
+#define TOPDOWN_SCENE 2
+#define SCENE_AMOUNT 3
 
 #endif
