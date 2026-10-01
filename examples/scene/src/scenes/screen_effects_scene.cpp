@@ -21,9 +21,42 @@ namespace game {
 
     void ScreenEffectsScene::update() {
         // detect input
-        if (bn::keypad::a_pressed()) { global_ptr->screen_effects->next_state(); }
+        if (bn::keypad::a_pressed()) { next_state(); }
         if(bn::keypad::l_pressed()) {
             end(_next_scene);
         }
+    }
+
+    // cycles through the various effects; good for showcases
+    void ScreenEffectsScene::next_state()
+    {
+        switch(global_ptr->screen_effects->current_state())
+        {
+            case remnant::CameraState::CLEAR:
+                global_ptr->screen_effects->set_center_fade();
+                break;
+            case remnant::CameraState::BUTANO:
+                global_ptr->screen_effects->set_camera_feed();
+                break;
+            case remnant::CameraState::CAMERA:
+                global_ptr->screen_effects->set_camera_blend();
+                break;
+            case remnant::CameraState::CAMERABLEND:
+                global_ptr->screen_effects->fade_out();
+                break;
+            case remnant::CameraState::FADEOUT:
+                global_ptr->screen_effects->set_black();
+                break;
+            case remnant::CameraState::BLACK:
+                global_ptr->screen_effects->fade_in();
+                break;
+            case remnant::CameraState::FADEIN:
+                global_ptr->screen_effects->set_clear();
+                break;
+            default:
+                global_ptr->screen_effects->set_clear();
+                break;
+        }
+        global_ptr->screen_effects->reload_alphas_ref();
     }
 }

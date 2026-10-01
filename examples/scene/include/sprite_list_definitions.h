@@ -12,11 +12,14 @@
 
 namespace game {
     constexpr remnant::SpritePartInfo remnant_logo_parts[] = {
-        {&bn::sprite_items::proto_remnant_logo, 0, 0, false, false}
+        {&bn::sprite_items::proto_remnant_logo, 0, 0, false, false},
+        {&bn::sprite_items::proto_remnant_logo, -64, -64, false, false},
+        {&bn::sprite_items::proto_remnant_logo, 0, -64, false, false},
+        {&bn::sprite_items::proto_remnant_logo, -64, 0, false, false}
     };
 
     constexpr remnant::SpriteObjectInfo sprite_list[] = {
-        [REMNANT_LOGO_64] = {0, 0, 1, 0, false, false, remnant_logo_parts}
+        [REMNANT_LOGO_64] = {0, 0, sizeof(remnant_logo_parts)/sizeof(remnant_logo_parts[0]), 0, false, false, remnant_logo_parts}
     };
 }
 

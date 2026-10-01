@@ -9,9 +9,7 @@ namespace game {
     RemnantLogoScene::RemnantLogoScene(RemnantLogoSceneInfo scene_info) :
         _remnant_sprite(REMNANT_LOGO_64),
         _next_scene(scene_info.default_next_scene)
-    {
-        _remnant_sprite.set_blending_enabled(true);
-    }
+    { }
 
     // this one is static so other functions can reach it, check "screen_effects_scene.h"
     bn::unique_ptr<remnant::Scene> RemnantLogoScene::create(const remnant::SceneInfo* scene_info) {

@@ -244,39 +244,6 @@ namespace remnant
         }
     }
 
-    // cycles through the various effects; good for showcases
-    void ScreenEffects::next_state()
-    {
-        switch(_camera_state)
-        {
-            case CameraState::CLEAR:
-                set_center_fade();
-                break;
-            case CameraState::BUTANO:
-                set_camera_feed();
-                break;
-            case CameraState::CAMERA:
-                set_camera_blend();
-                break;
-            case CameraState::CAMERABLEND:
-                fade_out();
-                break;
-            case CameraState::FADEOUT:
-                set_black();
-                break;
-            case CameraState::BLACK:
-                fade_in();
-                break;
-            case CameraState::FADEIN:
-                set_clear();
-                break;
-            default:
-                set_clear();
-                break;
-        }
-        reload_alphas_ref();
-    }
-
     CameraState ScreenEffects::current_state()
     {
         return _camera_state;
