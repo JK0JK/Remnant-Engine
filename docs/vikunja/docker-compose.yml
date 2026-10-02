@@ -1,0 +1,15 @@
+services:
+  minigame-investigator:
+    image: vikunja/vikunja:2.3.0
+    environment:
+      VIKUNJA_SERVICE_PUBLICURL: http://<your-server-ip>:3456/
+      VIKUNJA_SERVICE_SECRET: ae3e530620b284eda314ce74a4f0667ae65dcf8ad170cb41afa87f0d9e32c160
+      VIKUNJA_DATABASE_PATH: /db/vikunja.db
+      VIKUNJA_SERVICE_CUSTOMLOGOURL: "https://upload.wikimedia.org/wikipedia/commons/0/02/Blue_circled_9.svg?utm_source=en.wiktionary.org&utm_campaign=imageinfo&utm_content=original"
+      VIKUNJA_SERVICE_CUSTOMLOGOURLDARK: "https://upload.wikimedia.org/wikipedia/commons/0/02/Blue_circled_9.svg?utm_source=en.wiktionary.org&utm_campaign=imageinfo&utm_content=original"
+    ports:
+      - 3456:3456
+    volumes:
+      - ./files:/app/vikunja/files
+      - ./db:/db
+    restart: unless-stopped

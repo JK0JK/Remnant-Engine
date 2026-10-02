@@ -1,0 +1,3 @@
+- Plug-ins
+	- PC compilation (using [dewpoint-advance](https://github.com/suzukiplan/dewpoint-advance))
+		- contribute with GameJolt trophies (?)

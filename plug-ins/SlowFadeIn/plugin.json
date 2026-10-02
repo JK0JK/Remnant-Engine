@@ -1,0 +1,7 @@
+{
+    "plugin-name" : "SlowFadeIn",
+    "plugin-description" : "Basic implementation of a plugin that replaces engine code.", 
+    "plugin-credits" : [ "Jackie JK" ],
+    "plugin-version" : "0.0",
+    "plugin-repo" : "https://github.com/JK0JK/remnant-engine-test-plugin"
+}

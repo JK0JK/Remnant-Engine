@@ -35,15 +35,16 @@ TARGET      	:=  $(notdir $(CURDIR))
 BUILD       	:=  build
 LIBBUTANO   	:=  ../../butano/butano
 LIBREMNANT		:= 	../../remnant-engine
+PLUGINS			:=  ../../plug-ins
 PYTHON      	:=  python
-SOURCES     	:=  src src/scenes
-INCLUDES    	:=  include include/scenes
-DATA        	:=
-GRAPHICS    	:=  graphics
-AUDIO       	:=  audio
+SOURCES     	:=  $(shell find src -type d 2>/dev/null)
+INCLUDES    	:=  $(shell find include -type d 2>/dev/null)
+DATA        	:=	$(shell find data -type d 2>/dev/null)
+GRAPHICS    	:=  $(shell find graphics -type d 2>/dev/null)
+AUDIO       	:=  $(shell find audio -type d 2>/dev/null)
 AUDIOBACKEND	:=  maxmod
 AUDIOTOOL		:=  
-DMGAUDIO    	:=  dmg_audio
+DMGAUDIO    	:=  $(shell find dmg_audio -type d 2>/dev/null)
 DMGAUDIOBACKEND	:=  default
 ROMTITLE    	:=  SCENE-SHOW
 ROMCODE     	:=  SBTP
@@ -68,9 +69,25 @@ endif
 ifndef LIBBUTANOABS
 	export LIBBUTANOABS	:=	$(realpath $(LIBBUTANO))
 endif
+#--------------------------------------------------------------------------------------------------------------------
+# Get only the plug-ins needed
+#--------------------------------------------------------------------------------------------------------------------
+ACTIVE_PLUGINS := $(shell jq -r '.["active-plugin-list"][]?' plugins.json)
+PROJECT_PLUGINS := $(addprefix $(PLUGINS)/,$(ACTIVE_PLUGINS))
+
+#--------------------------------------------------------------------------------------------------------------------
+# Compile plug-ins before engine - this will allow for the user to replace engine implementations
+#--------------------------------------------------------------------------------------------------------------------
+SOURCES     	+=  $(shell find $(PROJECT_PLUGINS)/src -type d 2>/dev/null)
+INCLUDES    	+=  $(shell find $(PROJECT_PLUGINS)/include -type d 2>/dev/null) 
+GRAPHICS    	+=  $(shell find $(PROJECT_PLUGINS)/graphics -type d 2>/dev/null)
+AUDIO       	+=  $(shell find $(PROJECT_PLUGINS)/audio -type d 2>/dev/null)
+DMGAUDIO    	+=  $(shell find $(PROJECT_PLUGINS)/dmg_audio -type d 2>/dev/null) 
+
 #---------------------------------------------------------------------------------------------------------------------
 # Include main makefile:
 #---------------------------------------------------------------------------------------------------------------------
 include $(LIBREMNANTABS)/remnant.mak
 include $(LIBBUTANOABS)/butano.mak
 
+export OFILES := $(sort $(OFILES))
