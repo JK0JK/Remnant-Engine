@@ -4,10 +4,10 @@
 #include "sprite_part.h"
 #include "sprite_list.h"
 
-#include "fixed.h"
-#include "array.h"
-#include "vector.h"
-#include "unique_ptr.h"
+#include "bn_fixed.h"
+#include "bn_array.h"
+#include "bn_vector.h"
+#include "bn_unique_ptr.h"
 
 namespace remnant {
     struct SpriteObjectInfo {

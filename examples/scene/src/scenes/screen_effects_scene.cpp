@@ -1,6 +1,7 @@
 #include "screen_effects_scene.h"
 
-#include "keypad.h"
+#include "bn_keypad.h"
+
 #include "global.h"
 
 #include "scene_manager.h"

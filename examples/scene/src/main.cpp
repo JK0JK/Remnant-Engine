@@ -1,5 +1,5 @@
-#include "core.h"
-#include "color.h"
+#include "bn_core.h"
+#include "bn_color.h"
 
 #include "scene_manager.h"
 

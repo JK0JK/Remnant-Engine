@@ -1,8 +1,8 @@
 #ifndef REMNANT_SPRITE_PART_H
 #define REMNANT_SPRITE_PART_H
 
-#include "sprite_ptr.h"
-#include "fixed.h"
+#include "bn_sprite_ptr.h"
+#include "bn_fixed.h"
 
 namespace remnant {
     struct SpritePartInfo {

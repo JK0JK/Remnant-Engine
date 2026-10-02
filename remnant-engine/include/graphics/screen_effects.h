@@ -1,12 +1,13 @@
 #ifndef RE_SCREEN_EFFECTS_H
 #define RE_SCREEN_EFFECTS_H
 
-#include "blending_fade_alpha.h"
-#include "blending_fade_alpha_hbe_ptr.h"
-#include "array.h"
-#include "display.h"
-#include "blending.h"
-#include "core.h"
+#include "bn_blending_fade_alpha.h"
+#include "bn_blending_fade_alpha_hbe_ptr.h"
+#include "bn_array.h"
+#include "bn_display.h"
+#include "bn_blending.h"
+#include "bn_core.h"
+
 #include "screen_effects_type.h"
 
 namespace remnant {

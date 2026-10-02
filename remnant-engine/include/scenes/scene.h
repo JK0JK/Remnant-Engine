@@ -1,7 +1,8 @@
 #ifndef REMNANT_SCENE_H
 #define REMNANT_SCENE_H
 
-#include "unique_ptr.h"
+#include "bn_unique_ptr.h"
+
 #include "scene_list.h" // so all of Scene's children will have access to the scene list #define's
 
 namespace remnant {

@@ -1,8 +1,8 @@
 #include "remnant_logo_scene.h"
 
-#include "keypad.h"
-#include "global.h"
+#include "bn_keypad.h"
 
+#include "global.h"
 #include "sprite_list_definitions.h"
 
 namespace game {

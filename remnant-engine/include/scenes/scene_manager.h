@@ -2,8 +2,9 @@
 #define REMNANT_SCENE_MANAGER_H
 
 #include "scene.h"
-#include "unique_ptr.h"
 #include "screen_effects.h"
+
+#include "bn_unique_ptr.h"
 
 namespace remnant {
     class SceneManager {
