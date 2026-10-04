@@ -3,3 +3,4 @@ butano
 *.elf
 *.sav
 build/
+plugins/

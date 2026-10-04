@@ -33,9 +33,9 @@
 #---------------------------------------------------------------------------------------------------------------------
 TARGET      	:=  $(notdir $(CURDIR))
 BUILD       	:=  build
-LIBBUTANO   	:=  ../../butano/butano
+PLUGINS			:=  ../../plugins
+LIBBUTANO   	:=  $(PLUGINS)/butano/butano
 LIBREMNANT		:= 	../../remnant-engine
-PLUGINS			:=  ../../plug-ins
 PYTHON      	:=  python
 SOURCES     	:=  $(shell find src -type d 2>/dev/null)
 INCLUDES    	:=  $(shell find include -type d 2>/dev/null)
@@ -72,7 +72,7 @@ endif
 #--------------------------------------------------------------------------------------------------------------------
 # Get only the plug-ins needed
 #--------------------------------------------------------------------------------------------------------------------
-ACTIVE_PLUGINS := $(shell jq -r '.["active-plugin-list"][]?' plugins.json)
+ACTIVE_PLUGINS := $(shell jq -r '.["active-plugin-list"][]?' plugins.json 2>/dev/null)
 PROJECT_PLUGINS := $(addprefix $(PLUGINS)/,$(ACTIVE_PLUGINS))
 
 #--------------------------------------------------------------------------------------------------------------------
