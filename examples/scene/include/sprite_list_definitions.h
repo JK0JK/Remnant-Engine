@@ -18,8 +18,13 @@ namespace game {
         {&bn::sprite_items::proto_remnant_logo, -64, 0, false, false}
     };
 
+    template<typename T, size_t N>  
+    constexpr size_t num_sprites(const T (&sprite_parts)[N]) {  
+        return N;  
+    }
+
     constexpr remnant::SpriteObjectInfo sprite_list[] = {
-        [REMNANT_LOGO_64] = {0, 0, sizeof(remnant_logo_parts)/sizeof(remnant_logo_parts[0]), 0, false, false, remnant_logo_parts}
+        [REMNANT_LOGO_64] = {0, 0, 0, num_sprites(remnant_logo_parts), 0, false, false, remnant_logo_parts}
     };
 }
 

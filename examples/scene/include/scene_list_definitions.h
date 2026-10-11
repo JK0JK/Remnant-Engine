@@ -12,7 +12,7 @@
 namespace game {
     constexpr game::ScreenEffectsSceneInfo screen_effects_test = { {true, true, REMNANT_LOGO_SCENE} };
     constexpr game::RemnantLogoSceneInfo remnant_logo_test = { {true, true, SCREEN_EFFECTS_SCENE} };
-    constexpr remnant::TopDownSceneInfo topdown1 = { {true, true, DEFAULT_SCENE}, 1, 2, DEFAULT_SCENE, DEFAULT_SCENE, DEFAULT_SCENE, DEFAULT_SCENE};
+    constexpr remnant::TopDownSceneInfo topdown1 = { {true, true, DEFAULT_SCENE}, 1, 2};
 
     constexpr remnant::GeneralSceneInfo scene_list[] = {
         [SCREEN_EFFECTS_SCENE] = {game::ScreenEffectsScene::create, &screen_effects_test},

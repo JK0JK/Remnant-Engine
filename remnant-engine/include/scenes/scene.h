@@ -10,9 +10,9 @@ namespace remnant {
     class SceneManager;
 
     struct SceneInfo {
-        bool fadeIn;    // does the scene fade in when loaded?
-        bool fadeOut;   // does the scene fade out before unloaded?
-        int default_next_scene;
+        bool fadeIn = true;    // does the scene fade in when loaded?
+        bool fadeOut = true;   // does the scene fade out before unloaded?
+        int default_next_scene = DEFAULT_SCENE;
     };
 
     class Scene {

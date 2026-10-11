@@ -4,10 +4,11 @@
 
 namespace remnant {
 
-    SpritePart::SpritePart(const SpritePartInfo& info, bn::fixed x, bn::fixed y) :
+    SpritePart::SpritePart(const SpritePartInfo& info, bn::fixed mother_x, bn::fixed mother_y, int mother_z, int offset_z) :
     _offset_x(info.offset_x), // get from the table
     _offset_y(info.offset_y), // get from the table
-    _sprite(info.sprite->create_sprite(x + _offset_x, y + _offset_y)), // get from the table
+    _offset_z(offset_z),    // sprite part order among other SpriteParts in this SpriteObject
+    _sprite(info.sprite->create_sprite(mother_x + _offset_x, mother_y + _offset_y)),
     _base_hflipped(info.base_hflipped),   // get from the table
     _base_vflipped(info.base_vflipped)   // get from the table
     {
@@ -51,13 +52,12 @@ namespace remnant {
     void SpritePart::set_bg_priority(int imposed_bg_priority)
         { _sprite.set_bg_priority(imposed_bg_priority); }
 
-    //i have no idea how i'm going to work z-order into this...
-    /**
-    int z_order();
-    void set_z_order();
-    void put_above();
-    void put_below();
-    */
+    int SpritePart::z_order() { return _sprite.z_order(); }
+
+    void SpritePart::set_z_order(int imposed_z) { _sprite.set_z_order(imposed_z + _offset_z); }
+
+    //void put_above();
+    //void put_below();
 
     bool SpritePart::horizontal_flip()
         { return _sprite.horizontal_flip(); }

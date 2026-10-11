@@ -6,18 +6,15 @@ namespace remnant {
     SpriteObject::SpriteObject(int index) :
     _x(game::sprite_list[index].start_x),
     _y(game::sprite_list[index].start_y),
+    _z(game::sprite_list[index].start_z),
     _num_sprites(game::sprite_list[index].num_sprites),
     _bg_priority(game::sprite_list[index].bg_priority),
     _horizontal_flip(game::sprite_list[index].horizontal_flip),
     _vertical_flip(game::sprite_list[index].vertical_flip)
     {
-        //_sprite_parts = new SpritePart*[_num_sprites];
-        // get the sprite definition by index
-        // define _sprite_parts according to their own structure
-
-        for (int i = 0; i < _num_sprites; i++) {
+        for (int z_offset = 0; z_offset < _num_sprites; z_offset++) {
             _sprite_parts.push_back(  
-                bn::make_unique<SpritePart>(game::sprite_list[index].sprite_parts_def[i], _x, _y));  
+                bn::make_unique<SpritePart>(game::sprite_list[index].sprite_parts_def[z_offset], _x, _y, _z, z_offset));
         }
     }
 
@@ -61,12 +58,18 @@ namespace remnant {
     }
 
     //i have no idea how i'm going to work z-order into this...
-    /**
-    int z_order();
-    void set_z_order();
-    void put_above();
-    void put_below();
-    */
+    int SpriteObject::z_order() {
+        return _z;
+    }
+
+    void SpriteObject::set_z_order(int new_z) {
+        _z = new_z;
+        for (int i = 0; i < _num_sprites; i++) {
+            _sprite_parts[i]->set_z_order(new_z);
+        }
+    }
+    //void put_above();
+    //void put_below();
 
     bool SpriteObject::horizontal_flip() {
         return _horizontal_flip;

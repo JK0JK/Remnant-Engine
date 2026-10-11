@@ -11,13 +11,14 @@
 
 namespace remnant {
     struct SpriteObjectInfo {
-        const bn::fixed start_x;
-        const bn::fixed start_y;
-        int num_sprites;
+        const bn::fixed start_x = 0;
+        const bn::fixed start_y = 0;
+        int start_z = 0; 
+        int num_sprites = 1;
 
-        int bg_priority;
-        bool horizontal_flip;
-        bool vertical_flip;
+        int bg_priority = 1;
+        bool horizontal_flip = false;
+        bool vertical_flip = false;
 
         const SpritePartInfo* sprite_parts_def;
     };
@@ -39,9 +40,9 @@ namespace remnant {
             void set_bg_priority(int);
 
             //i have no idea how i'm going to work z-order into this...
-            /**
             int z_order();
-            void set_z_order();
+            void set_z_order(int);
+            /**
             void put_above();
             void put_below();
             */
@@ -82,6 +83,7 @@ namespace remnant {
         private:
             bn::fixed _x;
             bn::fixed _y;
+            int _z;
             int _num_sprites;
 
             int _bg_priority;

@@ -4,18 +4,20 @@
 #include "bn_sprite_ptr.h"
 #include "bn_fixed.h"
 
+#include "bn_sprite_items_empty_sprite.h"
+
 namespace remnant {
     struct SpritePartInfo {
-        const bn::sprite_item* sprite;
-        const bn::fixed offset_x;
-        const bn::fixed offset_y;
-        bool base_hflipped;
-        bool base_vflipped;
+        const bn::sprite_item* sprite = &bn::sprite_items::empty_sprite;
+        const bn::fixed offset_x = 0;
+        const bn::fixed offset_y = 0;
+        bool base_hflipped = false;
+        bool base_vflipped = false;
     };
     
     class SpritePart {
         public:
-            SpritePart(const SpritePartInfo&, bn::fixed, bn::fixed); // select from the list of sprites and load from rom
+            SpritePart(const SpritePartInfo&, bn::fixed, bn::fixed, int, int); // select from the list of sprites and load from rom
 
             bn::fixed offset_x();
             void set_offset_x(bn::fixed);
@@ -33,9 +35,9 @@ namespace remnant {
             void set_bg_priority(int);
 
             //i have no idea how i'm going to work z-order into this...
-            /**
             int z_order();
-            void set_z_order();
+            void set_z_order(int);
+            /**
             void put_above();
             void put_below();
             */
@@ -76,6 +78,7 @@ namespace remnant {
         private:
             bn::fixed _offset_x;
             bn::fixed _offset_y;
+            int _offset_z;
             bn::sprite_ptr _sprite;
             bool _base_hflipped;
             bool _base_vflipped;
