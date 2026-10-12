@@ -1,5 +1,6 @@
 {
     "active-plugin-list" : [
+        "Simple5x7Font",
         "TopDownScene"
     ],
     "inactive-plugin-list" : [

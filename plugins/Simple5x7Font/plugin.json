@@ -1,0 +1,7 @@
+{
+    "plugin-name" : "Simple5x7Font",
+    "plugin-description" : "Simple sprite font I made.", 
+    "plugin-credits" : [ "Jackie JK" ],
+    "plugin-version" : "0.0",
+    "plugin-repo" : "https://github.com/JK0JK/remnant-engine"
+}
