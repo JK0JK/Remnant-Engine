@@ -16,7 +16,7 @@
 #include "bn_regular_bg_items_pizzeria_fnaf1_alpha_bg1.h"
 
 namespace game {
-    constexpr remnant::BlankSceneInfo blank_scene;
+    constexpr remnant::BlankSceneInfo blank_scene = {false, true};
     constexpr game::ScreenEffectsSceneInfo screen_effects_test = game::ScreenEffectsSceneInfo{}.with_default_next_scene(REMNANT_LOGO_SCENE).with_background_color(31,31,0);
     constexpr game::RemnantLogoSceneInfo remnant_logo_test = game::RemnantLogoSceneInfo{}.with_default_next_scene(TOPDOWN_SCENE).with_background_color(31,31,0);;
     constexpr remnant::TopDownSceneInfo topdown1 = remnant::TopDownSceneInfo{}.with_default_next_scene(DEFAULT_SCENE).with_bg_base(&bn::regular_bg_items::one_room_test);
