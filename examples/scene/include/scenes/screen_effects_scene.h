@@ -5,7 +5,7 @@
 #include "screen_effects.h"
 
 namespace game {
-    struct ScreenEffectsSceneInfo : remnant::SceneInfo { };
+    struct ScreenEffectsSceneInfo : remnant::SceneInfoBase<ScreenEffectsSceneInfo> { };
 
     class ScreenEffectsScene : public remnant::Scene {
         public:

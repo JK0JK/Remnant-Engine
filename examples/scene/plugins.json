@@ -1,7 +1,8 @@
 {
     "active-plugin-list" : [
-        "SlowFadeIn"
+        "TopDownScene"
     ],
     "inactive-plugin-list" : [
+        "SlowFadeIn"
     ]
 }

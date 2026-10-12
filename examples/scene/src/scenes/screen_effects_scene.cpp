@@ -18,7 +18,7 @@ namespace game {
         return bn::unique_ptr<remnant::Scene>(new ScreenEffectsScene(*info)); 
     }
 
-    void ScreenEffectsScene::start() { }
+    void ScreenEffectsScene::start() {}
 
     void ScreenEffectsScene::update() {
         // detect input

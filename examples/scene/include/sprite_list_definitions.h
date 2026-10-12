@@ -26,6 +26,8 @@ namespace game {
     constexpr remnant::SpriteObjectInfo sprite_list[] = {
         [REMNANT_LOGO_64] = {0, 0, 0, num_sprites(remnant_logo_parts), 0, false, false, remnant_logo_parts}
     };
+
+    // TODO: figure out frames for animation
 }
 
 #endif

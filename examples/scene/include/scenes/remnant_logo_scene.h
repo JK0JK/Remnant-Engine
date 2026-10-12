@@ -5,7 +5,7 @@
 #include "sprite_object.h"
 
 namespace game {
-    struct RemnantLogoSceneInfo : remnant::SceneInfo { 
+    struct RemnantLogoSceneInfo : remnant::SceneInfoBase<RemnantLogoSceneInfo> { 
         // next scene(?)
     };
 

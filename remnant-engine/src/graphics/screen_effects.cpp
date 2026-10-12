@@ -102,6 +102,7 @@ namespace remnant
     {
         for(auto& a : _fade_alphas)
             a.set_value(1);
+        _fade_hbe.reload_alphas_ref();
 
         _camera_state = CameraState::BLACK;
     }

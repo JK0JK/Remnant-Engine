@@ -4,8 +4,11 @@
 
 namespace remnant {
     void Scene::end(int next_scene) {
-        BN_LOG("END SCENE NOW");
-        game::global_ptr->scene_manager->endSceneAndLoad(next_scene);
+        if (!_ending) {
+            _ending = true;
+            BN_LOG("END SCENE NOW");
+            game::global_ptr->scene_manager->endSceneAndLoad(next_scene);
+        }
     }
 }
 

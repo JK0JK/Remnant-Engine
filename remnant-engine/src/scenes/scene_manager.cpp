@@ -1,10 +1,13 @@
 #include "scene_manager.h"
 
+#include "bn_bg_palettes.h"
+#include "bn_color.h"
+
 #include "scene_list_definitions.h"
 #include "global.h"
 
 namespace remnant {
-    SceneManager::SceneManager() : SceneManager(DEFAULT_SCENE) {}
+    SceneManager::SceneManager() : SceneManager(BLANK_SCENE) {}
 
     SceneManager::SceneManager(int index) :
     _screen_effects(),
@@ -40,7 +43,7 @@ namespace remnant {
     }
 
     void SceneManager::is_destroyed_yet() {
-        if(_screen_effects.is_black()) {
+        if(_current_scene_info->fadeOut == false || _screen_effects.is_black()) {
             _state = SceneManagerState::NO_SCENE;
         } else {
             idle_update();
@@ -54,8 +57,9 @@ namespace remnant {
     }
 
     void SceneManager::startCurrentScene() {
-        if(_current_scene_info->fadeIn) { _screen_effects.fade_in(); }
+        bn::bg_palettes::set_transparent_color(_current_scene_info->background_color);
         _current_scene->start();
+        if(_current_scene_info->fadeIn) { _screen_effects.fade_in(); }
         _state = SceneManagerState::SCENE_RUNNING;
     }
 
