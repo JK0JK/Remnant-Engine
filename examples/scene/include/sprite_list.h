@@ -3,8 +3,8 @@
 
 #define DEFAULT_SPRITE 0
 
-#define REMNANT_LOGO_64 0
-#define REMNANT_LOGO_128 1
+#define NO_SPRITE 0
+#define REMNANT_LOGO_64 1
 
 #define SPRITE_AMOUNT 2
 

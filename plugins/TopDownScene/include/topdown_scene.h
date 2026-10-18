@@ -3,6 +3,8 @@
 
 #include "scene.h"
 
+#include "object_event.h"
+
 #include "bn_camera_ptr.h"
 #include "bn_regular_bg_ptr.h"
 #include "bn_regular_bg_item.h"
@@ -16,12 +18,16 @@ namespace remnant {
         const bn::regular_bg_item* bg_effects = &bn::regular_bg_items::empty_bg;
         // collision layer
         // list of NPCs
+        const ObjectEventInfo* npc = &default_object_event_info;
         // list of object events
 
         constexpr TopDownSceneInfo& with_bg_base(const bn::regular_bg_item* v) { bg_base = v; return *this; }
         constexpr TopDownSceneInfo& with_bg_top(const bn::regular_bg_item* v) { bg_top = v; return *this; }
         constexpr TopDownSceneInfo& with_bg_effects(const bn::regular_bg_item* v) { bg_effects = v; return *this; }
+        constexpr TopDownSceneInfo& with_obj_evnt_info(const ObjectEventInfo* v) { npc = v; return *this; }
     };
+
+
 
     class TopDownScene : public Scene {
         public:
@@ -42,6 +48,8 @@ namespace remnant {
 
             // collision layer
             // list of NPCs / object events
+            ObjectEvent _npc;
+
     };
 }
 

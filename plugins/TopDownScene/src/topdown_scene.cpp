@@ -9,10 +9,11 @@ namespace remnant {
         _bg_base(data.bg_base->create_bg(0,0)),
         _bg_top(data.bg_top->create_bg(0,0)),
         _bg_effects(data.bg_effects->create_bg(0,0)),
-        _camera(bn::camera_ptr::create(0, 0))
-    { 
+        _camera(bn::camera_ptr::create(0, 0)),
+        _npc(data.npc)
+    {
         _bg_base.set_blending_enabled(true);
-        _bg_base.set_priority(1);
+        _bg_base.set_priority(3);
         _bg_base.set_camera(_camera);
 
         _bg_top.set_blending_enabled(true);
@@ -20,7 +21,7 @@ namespace remnant {
         _bg_base.set_camera(_camera);
 
         _bg_effects.set_blending_enabled(true);
-        _bg_effects.set_priority(3);
+        _bg_effects.set_priority(1);
         _bg_effects.set_camera(_camera);
     }
 
