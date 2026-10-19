@@ -16,6 +16,10 @@ namespace game {
         {&bn::sprite_items::empty_sprite, 0, 0, false, false},
     };
 
+    constexpr remnant::SpritePartInfo remnant_flashlight[] = {
+        {&bn::sprite_items::proto_remnant_logo, 32, 16, false, false}
+    };
+
     constexpr remnant::SpritePartInfo remnant_logo_parts[] = {
         {&bn::sprite_items::proto_remnant_logo, 32, 32, false, false},
         {&bn::sprite_items::proto_remnant_logo, -32, -32, false, false},
@@ -30,7 +34,8 @@ namespace game {
 
     constexpr remnant::SpriteObjectInfo sprite_list[] = {
         [NO_SPRITE] = {.num_sprites = 0, .sprite_parts_def = empty_sprite},
-        [REMNANT_LOGO_64] = {.num_sprites = num_sprites(remnant_logo_parts), .sprite_parts_def = remnant_logo_parts}
+        [REMNANT_LOGO_64] = {.num_sprites = num_sprites(remnant_logo_parts), .sprite_parts_def = remnant_logo_parts},
+        [FLASHLIGHT] = {.num_sprites = 1, .sprite_parts_def = remnant_flashlight}
     };
 
     // TODO: figure out frames for animation

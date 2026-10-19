@@ -4,6 +4,8 @@
 #include "scene.h"
 #include "screen_effects.h"
 
+#include "bn_sprite_ptr.h"
+
 namespace game {
     struct ScreenEffectsSceneInfo : remnant::SceneInfoBase<ScreenEffectsSceneInfo> { };
 
@@ -14,8 +16,15 @@ namespace game {
             void start() override;
             void update() override;
             void next_state();
+
+            void move_player();
         private:
             remnant::ScreenEffects* _screen_effects;
+
+            bn::sprite_ptr _remnant_sprite;
+            bn::sprite_ptr _flashlight;
+            //remnant::SpriteObject _remnant_sprite;
+            //remnant::SpriteObject _flashlight;
             int _next_scene;
     };
 }

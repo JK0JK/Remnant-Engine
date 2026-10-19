@@ -5,7 +5,8 @@
 
 #define NO_SPRITE 0
 #define REMNANT_LOGO_64 1
+#define FLASHLIGHT 2
 
-#define SPRITE_AMOUNT 2
+#define SPRITE_AMOUNT 3
 
 #endif

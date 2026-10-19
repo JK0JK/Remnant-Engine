@@ -2,6 +2,8 @@
 
 #include "bn_keypad.h"
 
+#include "bn_window.h"
+
 namespace remnant {
     TopDownScene::TopDownScene(TopDownSceneInfo data) : 
         //_size_x(data.size_x),
@@ -12,7 +14,11 @@ namespace remnant {
         _camera(bn::camera_ptr::create(0, 0)),
         _npc(data.npc, _camera)
     {
-        _bg_base.set_blending_enabled(true);
+        //_remnant_sprite.set_blending_enabled(true); // will be hidden by fades
+        //_npc.set_window_enabled(true);   // should work as a mask to see _remnant_sprite and the backdrop color
+        bn::window::outside().set_show_blending(false);
+        
+        _bg_base.set_blending_enabled(false);
         _bg_base.set_priority(3);
         _bg_base.set_camera(_camera);
 

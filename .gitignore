@@ -4,3 +4,4 @@ butano
 *.sav
 build/
 plugins/butano
+.vscode/
