@@ -27,8 +27,6 @@ namespace remnant {
         constexpr TopDownSceneInfo& with_obj_evnt_info(const ObjectEventInfo* v) { npc = v; return *this; }
     };
 
-
-
     class TopDownScene : public Scene {
         public:
             TopDownScene(TopDownSceneInfo);

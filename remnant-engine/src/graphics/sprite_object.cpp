@@ -133,4 +133,20 @@ namespace remnant {
         }
     }
 
+    bn::optional<bn::camera_ptr> SpriteObject::camera() {
+        return _sprite_parts[0]->camera();
+    }
+
+    void SpriteObject::set_camera(bn::camera_ptr camera) {
+        for (int i = 0; i < _num_sprites; i++) {
+            _sprite_parts[i]->set_camera(camera);
+        }
+    }
+
+    void SpriteObject::remove_camera() {
+        for (int i = 0; i < _num_sprites; i++) {
+            _sprite_parts[i]->remove_camera();
+        }
+    }
+
 }

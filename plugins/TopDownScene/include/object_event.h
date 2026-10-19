@@ -2,6 +2,7 @@
 #define REMNANT_OBJECT_EVENT_H
 
 #include "bn_fixed.h"
+#include "bn_camera_ptr.h"
 
 #include "sprite_list.h"
 #include "sprite_object.h"
@@ -21,7 +22,7 @@ namespace remnant {
 
     class ObjectEvent {
         public:
-            ObjectEvent(const ObjectEventInfo*);
+            ObjectEvent(const ObjectEventInfo*, bn::camera_ptr);
             virtual void interaction();
         private:
             bn::fixed _pos_x;

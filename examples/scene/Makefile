@@ -78,11 +78,11 @@ PROJECT_PLUGINS := $(addprefix $(PLUGINS)/,$(ACTIVE_PLUGINS))
 #--------------------------------------------------------------------------------------------------------------------
 # Compile plug-ins before engine - this will allow for the user to replace engine implementations
 #--------------------------------------------------------------------------------------------------------------------
-SOURCES     	+=  $(shell find $(PROJECT_PLUGINS)/src -type d 2>/dev/null)
-INCLUDES    	+=  $(shell find $(PROJECT_PLUGINS)/include -type d 2>/dev/null) 
-GRAPHICS    	+=  $(shell find $(PROJECT_PLUGINS)/graphics -type d 2>/dev/null)
-AUDIO       	+=  $(shell find $(PROJECT_PLUGINS)/audio -type d 2>/dev/null)
-DMGAUDIO    	+=  $(shell find $(PROJECT_PLUGINS)/dmg_audio -type d 2>/dev/null) 
+SOURCES     	+=  $(shell find $(addsuffix /src,$(PROJECT_PLUGINS)) -type d 2>/dev/null)
+INCLUDES    	+=  $(shell find $(addsuffix /include,$(PROJECT_PLUGINS)) -type d 2>/dev/null) 
+GRAPHICS    	+=  $(shell find $(addsuffix /graphics,$(PROJECT_PLUGINS)) -type d 2>/dev/null)
+AUDIO       	+=  $(shell find $(addsuffix /audio,$(PROJECT_PLUGINS)) -type d 2>/dev/null)
+DMGAUDIO    	+=  $(shell find $(addsuffix /dmg_audio,$(PROJECT_PLUGINS)) -type d 2>/dev/null) 
 
 #---------------------------------------------------------------------------------------------------------------------
 # Include main makefile:

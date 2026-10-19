@@ -3,7 +3,7 @@
 
 #include "bn_sprite_ptr.h"
 #include "bn_fixed.h"
-
+#include "bn_camera_ptr.h"
 #include "bn_sprite_items_empty_sprite.h"
 
 namespace remnant {
@@ -75,6 +75,10 @@ namespace remnant {
             void set_window_enabled(bool);
             bool visible();
             void set_visible(bool);
+
+            bn::optional<bn::camera_ptr> camera();
+            void set_camera(bn::camera_ptr);
+            void remove_camera();
         private:
             bn::fixed _offset_x;
             bn::fixed _offset_y;

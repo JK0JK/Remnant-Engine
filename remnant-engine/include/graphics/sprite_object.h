@@ -5,6 +5,7 @@
 #include "sprite_list.h"
 
 #include "bn_fixed.h"
+#include "bn_camera_ptr.h"
 #include "bn_array.h"
 #include "bn_vector.h"
 #include "bn_unique_ptr.h"
@@ -80,6 +81,11 @@ namespace remnant {
             void set_window_enabled(bool);
             bool visible();
             void set_visible(bool);
+
+            bn::optional<bn::camera_ptr> camera();
+            void set_camera(bn::camera_ptr);
+            void remove_camera();
+
         private:
             bn::fixed _x;
             bn::fixed _y;

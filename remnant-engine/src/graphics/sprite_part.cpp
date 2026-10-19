@@ -124,4 +124,14 @@ namespace remnant {
     
     void SpritePart::set_visible(bool isVisible)
         { _sprite.set_visible(isVisible); }
+
+    bn::optional<bn::camera_ptr> SpritePart::camera()
+        { return _sprite.camera(); }
+    
+    void SpritePart::set_camera(bn::camera_ptr camera)
+        { _sprite.set_camera(camera); }
+
+    void SpritePart::remove_camera()
+        { _sprite.remove_camera(); }
+    
 }
