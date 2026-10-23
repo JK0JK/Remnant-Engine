@@ -13,14 +13,11 @@ namespace game {
         public:
             ScreenEffectsScene(ScreenEffectsSceneInfo);
             static bn::unique_ptr<remnant::Scene> create(const remnant::SceneInfo*);
-            void start() override;
             void update() override;
             void next_state();
 
             void move_player();
         private:
-            remnant::ScreenEffects* _screen_effects;
-
             bn::sprite_ptr _remnant_sprite;
             bn::sprite_ptr _flashlight;
             //remnant::SpriteObject _remnant_sprite;

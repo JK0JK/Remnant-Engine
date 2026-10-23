@@ -16,12 +16,10 @@ namespace remnant {
             void startCurrentScene();
             void endSceneAndLoad(int);
             void load_next_scene();
-            remnant::ScreenEffects getScreenEffects();
 
             void idle_update();
             void is_destroyed_yet();
         private:
-            remnant::ScreenEffects _screen_effects;
             bn::unique_ptr<Scene> _current_scene;
             const remnant::SceneInfo* _current_scene_info;
             

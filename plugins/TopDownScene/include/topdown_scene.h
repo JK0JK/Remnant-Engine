@@ -31,7 +31,6 @@ namespace remnant {
         public:
             TopDownScene(TopDownSceneInfo);
             static bn::unique_ptr<Scene> create(const SceneInfo*);
-            void start() override;
             void update() override;
 
             void move_player();

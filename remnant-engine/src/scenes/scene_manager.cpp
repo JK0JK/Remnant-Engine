@@ -10,12 +10,9 @@ namespace remnant {
     SceneManager::SceneManager() : SceneManager(BLANK_SCENE) {}
 
     SceneManager::SceneManager(int index) :
-    _screen_effects(),
     _state(SceneManagerState::NO_SCENE),
     _scene_to_load(index)
-    {
-        game::global_ptr->screen_effects = &_screen_effects;
-    }
+    { }
 
     void SceneManager::update() {
         switch (_state) {
@@ -38,12 +35,11 @@ namespace remnant {
     }
 
     void SceneManager::idle_update() {
-        _screen_effects.update();
-        _current_scene->update();
+        _current_scene->base_update();
     }
 
     void SceneManager::is_destroyed_yet() {
-        if(_current_scene_info->fadeOut == false || _screen_effects.is_black()) {
+        if(_current_scene->ended()) {
             _state = SceneManagerState::NO_SCENE;
         } else {
             idle_update();
@@ -59,29 +55,18 @@ namespace remnant {
     void SceneManager::startCurrentScene() {
         bn::bg_palettes::set_transparent_color(_current_scene_info->background_color);
         _current_scene->start();
-        if(_current_scene_info->fadeIn) { _screen_effects.fade_in(); }
         _state = SceneManagerState::SCENE_RUNNING;
     }
 
     void SceneManager::endSceneAndLoad(int next_scene) {
         // play scene end sound, if there is any
             // i.e. steps going away
-        
-            _scene_to_load = next_scene;
-
-            if(_current_scene_info->fadeOut) {
-            _screen_effects.fade_out();
-
-            _state = SceneManagerState::DESTROYING_SCENE;
-        }
+        _scene_to_load = next_scene;
+        _state = SceneManagerState::DESTROYING_SCENE;
     }
 
     void SceneManager::load_next_scene() {
         this->_current_scene = createScene(_scene_to_load);
         _state = SceneManagerState::LOADING_SCENE;
-    }
-
-    remnant::ScreenEffects SceneManager::getScreenEffects() {
-        return _screen_effects;
     }
 }

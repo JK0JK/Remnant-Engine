@@ -15,7 +15,7 @@
 
 namespace game {
     ScreenEffectsScene::ScreenEffectsScene(ScreenEffectsSceneInfo scene_info) : 
-        _screen_effects(global_ptr->screen_effects),
+        Scene(scene_info),
         _remnant_sprite(bn::sprite_items::proto_remnant_logo.create_sprite(32,32)),
         _flashlight(bn::sprite_items::proto_remnant_logo.create_sprite(16,16)),
         _next_scene(scene_info.default_next_scene)
@@ -24,12 +24,6 @@ namespace game {
         _remnant_sprite.set_blending_enabled(true); // will be hidden by fades
         _flashlight.set_window_enabled(true);   // should work as a mask to see _remnant_sprite and the backdrop color
         bn::window::sprites().set_show_blending(false);
-
-        // this is being stopped by a bug in butano
-        // 0x07000009 is becoming 11 (invalid) for some reason; butano is likely attempting to make _remnant both blend and window
-        // emu:write16(0x07000009, 0x00) fixes it until any of _remnant's OAM attributes (namely position) changes and gets reset
-        // to what butano thinks they should be
-        // hopefully will be fixed someday
     }
 
     // this one is static so other functions can reach it, check "screen_effects_scene.h"
@@ -37,8 +31,6 @@ namespace game {
         const ScreenEffectsSceneInfo* info = static_cast<const ScreenEffectsSceneInfo*>(scene_info);  
         return bn::unique_ptr<remnant::Scene>(new ScreenEffectsScene(*info)); 
     }
-
-    void ScreenEffectsScene::start() {}
 
     void ScreenEffectsScene::update() {
         // detect input
@@ -79,33 +71,33 @@ namespace game {
     // cycles through the various effects; good for showcases
     void ScreenEffectsScene::next_state()
     {
-        switch(global_ptr->screen_effects->current_state())
+        switch(_screen_effects.current_state())
         {
             case remnant::CameraState::CLEAR:
-                global_ptr->screen_effects->set_center_fade();
+                _screen_effects.set_center_fade();
                 break;
             case remnant::CameraState::BUTANO:
-                global_ptr->screen_effects->set_camera_feed();
+                _screen_effects.set_camera_feed();
                 break;
             case remnant::CameraState::CAMERA:
-                global_ptr->screen_effects->set_camera_blend();
+                _screen_effects.set_camera_blend();
                 break;
             case remnant::CameraState::CAMERABLEND:
-                global_ptr->screen_effects->fade_out();
+                _screen_effects.fade_out();
                 break;
             case remnant::CameraState::FADEOUT:
-                global_ptr->screen_effects->set_black();
+                _screen_effects.set_black();
                 break;
             case remnant::CameraState::BLACK:
-                global_ptr->screen_effects->fade_in();
+                _screen_effects.fade_in();
                 break;
             case remnant::CameraState::FADEIN:
-                global_ptr->screen_effects->set_clear();
+                _screen_effects.set_clear();
                 break;
             default:
-                global_ptr->screen_effects->set_clear();
+                _screen_effects.set_clear();
                 break;
         }
-        global_ptr->screen_effects->reload_alphas_ref();
+        _screen_effects.reload_alphas_ref();
     }
 }

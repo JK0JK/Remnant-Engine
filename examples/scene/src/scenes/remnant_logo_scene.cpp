@@ -7,6 +7,7 @@
 
 namespace game {
     RemnantLogoScene::RemnantLogoScene(RemnantLogoSceneInfo scene_info) :
+        Scene(scene_info),
         _remnant_sprite(REMNANT_LOGO_64),
         _next_scene(scene_info.default_next_scene)
     { }
@@ -16,9 +17,7 @@ namespace game {
         const RemnantLogoSceneInfo* info = static_cast<const RemnantLogoSceneInfo*>(scene_info);  
         return bn::unique_ptr<remnant::Scene>(new RemnantLogoScene(*info)); 
     }
-
-    void RemnantLogoScene::start() { }
-
+    
     void RemnantLogoScene::update() {
         if(bn::keypad::l_pressed()) {
             end(_next_scene);

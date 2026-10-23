@@ -13,7 +13,6 @@ namespace game {
         public:
             RemnantLogoScene(RemnantLogoSceneInfo);
             static bn::unique_ptr<remnant::Scene> create(const remnant::SceneInfo*);
-            void start() override;
             void update() override;
         private:
             remnant::SpriteObject _remnant_sprite;

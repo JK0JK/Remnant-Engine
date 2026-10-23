@@ -1,9 +1,10 @@
 #include "disclaimer_scene.h"
 
 namespace remnant {
-    DisclaimerScene::DisclaimerScene(DisclaimerSceneInfo scene_info) {
-        this->_next_scene = scene_info.default_next_scene;
-    }
+    DisclaimerScene::DisclaimerScene(DisclaimerSceneInfo scene_info) :
+        Scene(scene_info),  // slices BlankSceneInfo -> SceneInfo, calls base ctor  
+        _next_scene(scene_info.default_next_scene)  
+    {}
 
     // this one is static so other functions can reach it, check "screen_effects_scene.h"
     bn::unique_ptr<remnant::Scene> DisclaimerScene::create(const remnant::SceneInfo* scene_info) {

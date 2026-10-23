@@ -10,6 +10,7 @@ namespace remnant {
     TopDownScene::TopDownScene(TopDownSceneInfo data) : 
         //_size_x(data.size_x),
         //_size_y(data.size_y)
+        Scene(data),
         _bg_base(data.bg_base->create_bg(0,0)),
         _bg_top(data.bg_top->create_bg(0,0)),
         _bg_effects(data.bg_effects->create_bg(0,0)),
@@ -37,12 +38,6 @@ namespace remnant {
     bn::unique_ptr<Scene> TopDownScene::create(const SceneInfo* scene_info) {
         const TopDownSceneInfo* info = static_cast<const TopDownSceneInfo*>(scene_info);  
         return bn::unique_ptr<Scene>(new TopDownScene(*info));  
-    }
-    
-    void TopDownScene::start() {
-        // idk
-
-        //game::global_ptr->screen_effects->set_clear();
     }
 
     void TopDownScene::update() {

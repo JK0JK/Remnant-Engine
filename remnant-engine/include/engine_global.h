@@ -10,7 +10,6 @@ namespace remnant {
 
     struct global_data {
         SceneManager* scene_manager;
-        ScreenEffects* screen_effects;
     };
 }
 
