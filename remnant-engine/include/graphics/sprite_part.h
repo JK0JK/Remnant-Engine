@@ -6,6 +6,8 @@
 #include "bn_camera_ptr.h"
 #include "bn_sprite_items_empty_sprite.h"
 
+#include "sprite_modes.h"
+
 namespace remnant {
     struct SpritePartInfo {
         const bn::sprite_item* sprite = &bn::sprite_items::empty_sprite;
@@ -13,6 +15,7 @@ namespace remnant {
         const bn::fixed offset_y = 0;
         bool base_hflipped = false;
         bool base_vflipped = false;
+        //int sprite_mode = SM_BLENDED;
     };
     
     class SpritePart {

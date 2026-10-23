@@ -1,7 +1,9 @@
 #include "topdown_scene.h"
 
-#include "bn_keypad.h"
+#include "global.h"
+#include "screen_effects.h"
 
+#include "bn_keypad.h"
 #include "bn_window.h"
 
 namespace remnant {
@@ -15,10 +17,11 @@ namespace remnant {
         _npc(data.npc, _camera)
     {
         //_remnant_sprite.set_blending_enabled(true); // will be hidden by fades
-        //_npc.set_window_enabled(true);   // should work as a mask to see _remnant_sprite and the backdrop color
-        bn::window::outside().set_show_blending(false);
+        _npc.sprite()->set_blending_enabled(false);
+        _npc.sprite()->set_window_enabled(true);   // should work as a mask to see _remnant_sprite and the backdrop color
+        //bn::window::outside().set_show_blending(true);
         
-        _bg_base.set_blending_enabled(false);
+        _bg_base.set_blending_enabled(true);
         _bg_base.set_priority(3);
         _bg_base.set_camera(_camera);
 
@@ -38,6 +41,8 @@ namespace remnant {
     
     void TopDownScene::start() {
         // idk
+
+        //game::global_ptr->screen_effects->set_clear();
     }
 
     void TopDownScene::update() {
@@ -50,22 +55,26 @@ namespace remnant {
 
     void TopDownScene::move_player() {
         if (bn::keypad::left_held()) {
-            _camera.set_x(_camera.x()-1);
+            _npc.sprite()->set_x(_camera.x() - 5);
+            _camera.set_x(_camera.x()-5);
             //_main_character.move_x(-1);
             //_camera.set_x(_main_character.x());
         }
         if (bn::keypad::right_held()) {
-            _camera.set_x(_camera.x()+1);
+            _npc.sprite()->set_x(_camera.x() + 5);
+            _camera.set_x(_camera.x()+5);
             //_main_character.move_x(1);
             //_camera.set_x(_main_character.x());
         }
         if (bn::keypad::up_held()) {
-            _camera.set_y(_camera.y()-1);
+            _npc.sprite()->set_y(_camera.y() - 5);
+            _camera.set_y(_camera.y()-5);
             //_main_character.move_y(-1);
             //_camera.set_y(_main_character.y());
         }
         if (bn::keypad::down_held()) {
-            _camera.set_y(_camera.y()+1);
+            _npc.sprite()->set_y(_camera.y() + 5);
+            _camera.set_y(_camera.y()+5);
             //_main_character.move_y(1);
             //_camera.set_y(_main_character.y());
         }

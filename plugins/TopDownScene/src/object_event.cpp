@@ -18,4 +18,8 @@ namespace remnant {
     void ObjectEvent::interaction() {
         // to be defined by every child of ObjectEvent
     }
+
+    SpriteObject* ObjectEvent::sprite() {
+        return &_ow_sprite;
+    }
 }

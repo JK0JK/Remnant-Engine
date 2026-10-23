@@ -24,6 +24,7 @@ namespace remnant {
         public:
             ObjectEvent(const ObjectEventInfo*, bn::camera_ptr);
             virtual void interaction();
+            SpriteObject* sprite();
         private:
             bn::fixed _pos_x;
             bn::fixed _pos_y;
