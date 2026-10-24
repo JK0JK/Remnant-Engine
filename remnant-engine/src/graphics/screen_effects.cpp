@@ -1,11 +1,15 @@
 #include "screen_effects.h"
 
+#include "bn_log.h"
+
 namespace remnant
 {
     ScreenEffects::ScreenEffects() :
         _fade_alphas(),
         _fade_hbe(bn::blending_fade_alpha_hbe_ptr::create(_fade_alphas))
     {
+        BN_LOG(&_fade_alphas);
+        BN_LOG(&_fade_hbe);
         for(auto& a : _fade_alphas)
             a.set_value(0);
     }

@@ -10,24 +10,28 @@ namespace remnant {
     SceneManager::SceneManager() : SceneManager(BLANK_SCENE) {}
 
     SceneManager::SceneManager(int index) :
-    _state(SceneManagerState::NO_SCENE),
-    _scene_to_load(index)
+        _state(SceneManagerState::NO_SCENE),
+        _scene_to_load(index)
     { }
+
+    void SceneManager::endSceneAndLoad(int next_scene) {
+        // play scene end sound, if there is any
+            // i.e. steps going away
+        _scene_to_load = next_scene;
+        _state = SceneManagerState::DESTROYING_SCENE;
+        // starts the ending sequence
+    }
 
     void SceneManager::update() {
         switch (_state) {
             case SceneManagerState::NO_SCENE:
-                load_next_scene();
+                scene_start_sequence(); // becomes SCENE_RUNNING
                 break;
-            case SceneManagerState::LOADING_SCENE:
-                startCurrentScene();
-                break; // should already be loading with update(?)
-            case SceneManager::DESTROYING_SCENE:
-                is_destroyed_yet();
-                break;
-                // no break here because it will just do idle_update() anyway
             case SceneManagerState::SCENE_RUNNING:
                 idle_update();
+                break;
+            case SceneManager::DESTROYING_SCENE:
+                is_ended_yet();
                 break;
             default:
                 break;
@@ -36,11 +40,14 @@ namespace remnant {
 
     void SceneManager::idle_update() {
         _current_scene->base_update();
+        // whatever else's update
     }
 
-    void SceneManager::is_destroyed_yet() {
+    void SceneManager::is_ended_yet() {
         if(_current_scene->ended()) {
+            _current_scene.reset();
             _state = SceneManagerState::NO_SCENE;
+            scene_start_sequence();
         } else {
             idle_update();
         }
@@ -58,15 +65,18 @@ namespace remnant {
         _state = SceneManagerState::SCENE_RUNNING;
     }
 
-    void SceneManager::endSceneAndLoad(int next_scene) {
-        // play scene end sound, if there is any
-            // i.e. steps going away
-        _scene_to_load = next_scene;
-        _state = SceneManagerState::DESTROYING_SCENE;
+    void SceneManager::load_next_scene() {
+        _current_scene = createScene(_scene_to_load);
+        _state = SceneManagerState::LOADING_SCENE;
     }
 
-    void SceneManager::load_next_scene() {
-        this->_current_scene = createScene(_scene_to_load);
-        _state = SceneManagerState::LOADING_SCENE;
+    void SceneManager::scene_ending_sequence() {
+        _state = SceneManagerState::NO_SCENE;
+    }
+
+    void SceneManager::scene_start_sequence() {
+        load_next_scene();
+        startCurrentScene();
+        _state = SceneManagerState::SCENE_RUNNING;
     }
 }

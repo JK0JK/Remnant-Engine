@@ -16,8 +16,6 @@ namespace remnant {
         return bn::unique_ptr<remnant::Scene>(new BlankScene(*info)); 
     }
 
-    void BlankScene::start() { }
-
     void BlankScene::update() {
         end(_next_scene);
     }

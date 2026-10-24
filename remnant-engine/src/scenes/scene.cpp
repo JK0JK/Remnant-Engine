@@ -4,15 +4,17 @@
 
 namespace remnant {
     Scene::Scene(const SceneInfo& info) :
+    _screen_effects(),
     _fadeIn(info.fadeIn),
     _fadeOut(info.fadeOut),
-    _screen_effects(),
     _base_screen_effect(info.base_screen_effect)
-    {
-        BN_LOG(&_screen_effects);
+    { 
+        BN_LOG("New scene created.");
     }
 
     void Scene::start() {
+        BN_LOG("Scene start()ed");
+        //BN_LOG(&_screen_effects);
         if(_fadeIn) { _screen_effects.fade_in(); }
     }
 
@@ -24,8 +26,6 @@ namespace remnant {
     void Scene::end(int next_scene) {
         if (!_ending) {
             _ending = true;
-            //BN_LOG("END SCENE NOW");
-
             if(_fadeOut) { _screen_effects.fade_out(); }
             game::global_ptr->scene_manager->endSceneAndLoad(next_scene);
         }
